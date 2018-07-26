@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import albumData from './../data/albums';
 import { Link } from 'react-router-dom';
 import albumData from './../data/albums';
 

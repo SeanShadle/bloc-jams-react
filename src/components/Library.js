@@ -27,5 +27,3 @@ class Library extends Component {
 }
 
 export default Library;
-
-//title duration audioSrc

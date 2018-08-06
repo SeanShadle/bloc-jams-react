@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import albumData from './../data/albums';
+import "./album.css"
+import Song from "./song"
 
 class Album extends Component {
     constructor(props) {
@@ -12,7 +14,7 @@ class Album extends Component {
         this.state = {
             album: album,
             currentSong: album.songs[0],
-            isPlaying: false
+            isPlaying: false,
         };
 
         this.audioElement = document.createElement('audio');
@@ -26,7 +28,7 @@ class Album extends Component {
 
     pause() {
         this.audioElement.pause();
-        this.setState({ isplaying: false});
+        this.setState({ isplaying: false });
     }
 
     setSong(song) {
@@ -43,7 +45,6 @@ class Album extends Component {
             this.play();
         }
     }
-
 
     render() {
         return (
@@ -63,16 +64,11 @@ class Album extends Component {
                         <col id="song-duration-column" />
                     </colgroup>
                     <tbody>
-                        { this.state.album.songs.map( (song, index) => {
-                                return (
-                                    <tr className="song" key={index} onClick={() => this.handleSongClick(song)} >
-                                        <td>{index + 1}</td>
-                                        <td>{song.title}</td>
-                                        <td>{song.duration}</td>
-                                    </tr>
-                                )
-                            })
-                        }
+                        {this.state.album.songs.map((song, index) => {
+                            return (
+                                <Song key={index} className="song" song={song} index={index} playing={(this.state.currentSong === song && this.state.isPlaying) ? true : false} handleSongClick={e => this.handleSongClick(e)} />
+                            )
+                        })}
                     </tbody>
                 </table >
             </section >

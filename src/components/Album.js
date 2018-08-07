@@ -28,7 +28,7 @@ class Album extends Component {
 
     pause() {
         this.audioElement.pause();
-        this.setState({ isplaying: false });
+        this.setState({ isPlaying: false });
     }
 
     setSong(song) {
@@ -66,7 +66,7 @@ class Album extends Component {
                     <tbody>
                         {this.state.album.songs.map((song, index) => {
                             return (
-                                <Song key={index} className="song" song={song} index={index} playing={(this.state.currentSong === song && this.state.isPlaying) ? true : false} handleSongClick={e => this.handleSongClick(e)} />
+                                <Song key={index} className="song" song={song} index={index} playing={this.state.currentSong === song && this.state.isPlaying} handleSongClick={e => this.handleSongClick(e)} />
                             )
                         })}
                     </tbody>

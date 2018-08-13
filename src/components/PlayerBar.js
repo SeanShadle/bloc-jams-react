@@ -1,6 +1,14 @@
 import React, { Component } from 'react';
 
 class PlayerBar extends Component {
+
+    formatTime(time) {
+        const minutes = Math.floor(time / 60);
+        const seconds = parseInt(time % 60);
+        const str = isFinite(time) ? (String(minutes) + ":" + (seconds < 10 ? "0" : "") + String(seconds)) : "-:--";
+        return str;
+    }
+
     render() {
         return (
             <section className="player-bar">
@@ -16,7 +24,7 @@ class PlayerBar extends Component {
                     </button>
                 </section>
                 <section id="time-control">
-                    <div className="current-time">{this.props.currentTime}</div>
+                    <div className="current-time">{this.formatTime(this.props.currentTime)}</div>
                     <input
                         type="range"
                         className="seek-bar"
@@ -26,13 +34,21 @@ class PlayerBar extends Component {
                         step="0.01"
                         onChange={this.props.handleTimeChange}
                     />
-                    <div className="total-time">{this.props.duration}</div>
+                    <div className="total-time">{this.formatTime(this.props.duration)}</div>
                 </section>
                 <section id="volume-control">
                     <div className="icon ion-volume-low"></div>
-                    <input type="range" className="seek-bar" value="80" />
+                    <input
+                        type="range"
+                        className="seek-bar"
+                        value={this.props.volume}
+                        max="100"
+                        min="0"
+                        step="1"
+                        onChange={this.props.handleVolumeChange}
+                    />
                     {/* <input type="range" className="seek-bar" defaultValue="80" /> */}
-                    <div className="icon ion-volume-high"></div>
+                    <div className="icon ion-volume-high">{this.props.volume}</div>
                 </section>
             </section>
         );

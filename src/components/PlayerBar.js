@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import "./playerBar.css";
 
 class PlayerBar extends Component {
 
@@ -13,21 +14,21 @@ class PlayerBar extends Component {
         return (
             <section className="player-bar">
                 <section id="buttons">
-                    <button id="previous" onClick={this.props.handlePrevClick}>
-                        <span className="ion-skip-backward"></span>
+                    <button id="previous" className="btn btn-dark" onClick={this.props.handlePrevClick}>
+                        <span className="icon ion-md-skip-backward"></span>
                     </button>
-                    <button id="play-pause" onClick={this.props.handleSongClick} >
-                        <span className={this.props.isPlaying ? 'ion-pause' : 'ion-play'}></span>
+                    <button id="play-pause" className="btn btn-dark" onClick={this.props.handleSongClick} >
+                        <span className={this.props.isPlaying ? 'icon ion-md-pause' : 'icon ion-md-play'}></span>
                     </button>
-                    <button id="next" onClick={this.props.handleNextClick}>
-                        <span className="ion-skip-forward"></span>
+                    <button id="next" className="btn btn-dark ion-play" onClick={this.props.handleNextClick}>
+                        <span className="icon ion-md-skip-forward"></span>
                     </button>
                 </section>
                 <section id="time-control">
                     <div className="current-time">{this.formatTime(this.props.currentTime)}</div>
                     <input
                         type="range"
-                        className="seek-bar"
+                        className="custom-range range-slider"
                         value={(this.props.currentTime / this.props.duration) || 0}
                         max="1"
                         min="0"
@@ -40,7 +41,7 @@ class PlayerBar extends Component {
                     <div className="icon ion-volume-low"></div>
                     <input
                         type="range"
-                        className="seek-bar"
+                        className="custom-range range-slider"
                         value={this.props.volume}
                         max="100"
                         min="0"

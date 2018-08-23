@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import albumData from './../data/albums';
 import PlayerBar from './PlayerBar';
-import "./album.css"
-import Song from "./song"
+import "./album.css";
+import Song from "./song";
+
 
 class Album extends Component {
     constructor(props) {
@@ -37,10 +38,10 @@ class Album extends Component {
 
     componentDidMount() {
         this.eventListeners = {
-            timeupdate: e => {
+            timeupdate: () => {
                 this.setState({ currenTime: this.audioElement.currentTime });
             },
-            durationchange: e => {
+            durationchange: () => {
                 this.setState({ duration: this.audioElement.duration });
             }
         };
@@ -96,13 +97,6 @@ class Album extends Component {
         this.setState({ currentVolume: e.target.value });
     }
 
-    formatTime(time) {
-        const minutes = Math.floor(time / 60);
-        const seconds = parseInt(time % 60);
-        const str = isFinite(time) ? (String(minutes) + ":" + (seconds < 10 ? "0" : "") + String(seconds)) : "-:--";
-        return str;
-    }
-
     render() {
         return (
             <section className="album">
@@ -114,20 +108,22 @@ class Album extends Component {
                         <div id="release-info">{this.state.album.releaseInfo}</div>
                     </div>
                 </section>
-                <table id="song-list">
-                    <colgroup>
-                        <col id="song-number-column" />
-                        <col id="song-title-column" />
-                        <col id="song-duration-column" />
-                    </colgroup>
-                    <tbody>
-                        {this.state.album.songs.map((song, index) => {
-                            return (
-                                <Song key={index} className="song" song={song} index={index} playing={this.state.currentSong === song && this.state.isPlaying} handleSongClick={e => this.handleSongClick(e)} />
-                            )
-                        })}
-                    </tbody>
-                </table >
+                <div className="table-div">
+                    <table id="song-list" className="song-array">
+                        <colgroup>
+                            <col id="song-number-column" />
+                            <col id="song-title-column" />
+                            <col id="song-duration-column" />
+                        </colgroup>
+                        <tbody>
+                            {this.state.album.songs.map((song, index) => {
+                                return (
+                                    <Song key={index} className="song" song={song} index={index} playing={this.state.currentSong === song && this.state.isPlaying} handleSongClick={e => this.handleSongClick(e)} />
+                                )
+                            })}
+                        </tbody>
+                    </table >
+                </div>
                 <PlayerBar
                     isPlaying={this.state.isPlaying}
                     currentSong={this.state.currentSong}

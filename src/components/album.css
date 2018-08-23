@@ -1,3 +1,28 @@
- .testing{
-    display: none;
- }
+.album{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    min-width: 100%;
+}
+
+.table-div{
+    margin-left: 47%;
+    margin-right: 46.25%;
+    border: 3px solid black;
+    background:lightgrey;
+    color:black;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+
+.song-array{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100px;
+}
+
+#album-cover-art{
+    border: 5px solid black;
+    border-radius: 75%;
+}

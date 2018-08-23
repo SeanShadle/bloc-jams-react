@@ -1,0 +1,8 @@
+.library{
+    background-image:linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.3));
+}
+
+.song-art{
+    border: 5px solid black;
+    border-radius: 50em;
+}

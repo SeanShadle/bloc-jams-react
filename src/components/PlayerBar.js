@@ -5,7 +5,7 @@ class PlayerBar extends Component {
 
     formatTime(time) {
         const minutes = Math.floor(time / 60);
-        const seconds = parseInt(time % 60);
+        const seconds = parseInt(time % 60, 10);
         const str = isFinite(time) ? (String(minutes) + ":" + (seconds < 10 ? "0" : "") + String(seconds)) : "-:--";
         return str;
     }

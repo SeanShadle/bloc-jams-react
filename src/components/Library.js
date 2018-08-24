@@ -17,11 +17,11 @@ class Library extends Component {
             <Link to={`/album/${album.slug}`} key={index}>
               <img className="song-art" src={album.albumCover} alt={album.title} />
               <div className='song-info'>
-              <button type="song-info" class="btn btn-dark">
-              <div>{album.title}</div>
-              <div>{album.artist}</div>
-              <div>{album.songs.length} songs</div>
-              </button>
+                <button type="song-info" className="btn btn-dark">
+                  <div>{album.title}</div>
+                  <div>{album.artist}</div>
+                  <div>{album.songs.length} songs</div>
+                </button>
               </div>
             </Link>
           )
